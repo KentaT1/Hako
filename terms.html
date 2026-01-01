@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Hako</title>
+    <style>
+        :root {
+            /* Dark mode (default) - matching app theme */
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #0d0d0d;
+            --text-primary: #f2f2f2;
+            --text-secondary: #b3b3b3;
+            --border: #4d4d4d;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] {
+            /* Light mode - matching app theme */
+            --bg-primary: #f2f2f2;
+            --bg-secondary: #e6e6e6;
+            --bg-card: #e6e6e6;
+            --text-primary: #0d0d0d;
+            --text-secondary: #4d4d4d;
+            --border: #b3b3b3;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            object-fit: cover;
+            object-position: center;
+        }
+
+        [data-theme="light"] .logo img {
+            filter: brightness(0) invert(0);
+        }
+
+        nav .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-card);
+            transform: rotate(15deg);
+        }
+
+        .theme-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .theme-icon {
+            background: var(--text-primary);
+            box-shadow: inset -8px 0 0 var(--bg-primary);
+        }
+
+        /* Terms Content */
+        .terms-content {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .terms-content h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .terms-content .last-updated {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+
+        .terms-content h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .terms-content h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .terms-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .terms-content ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .terms-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .terms-content a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            transition: opacity 0.3s ease;
+        }
+
+        .terms-content a:hover {
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .terms-content {
+                padding: 2rem 1rem;
+                margin-top: 80px;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/HAKO_V4-removebg-preview.png" alt="Hako Logo">
+                <span>Hako</span>
+            </a>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon" id="themeIcon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms of Service Content -->
+    <div class="terms-content">
+        <h1>TERMS OF SERVICE</h1>
+        <p class="last-updated">Last updated: January 1, 2026</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using Hako: AI Flashcard Maker ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.</p>
+
+        <h2>2. Eligibility</h2>
+        <p>You must be at least 13 years of age to use this service. By using Hako, you represent and warrant that you meet this age requirement.</p>
+
+        <h2>3. User Accounts</h2>
+        <h3>Account Creation:</h3>
+        <p>To use certain features, you must sign in via Google. You are responsible for maintaining the security of your account.</p>
+        
+        <h3>Responsibility:</h3>
+        <p>You are responsible for all activities that occur under your account.</p>
+        
+        <h3>Termination:</h3>
+        <p>We reserve the right to suspend or terminate accounts that violate these terms or engage in fraudulent or illegal activity.</p>
+
+        <h2>4. AI-Generated Content Disclaimer</h2>
+        <p>Hako utilizes Google Gemini AI to generate flashcards.</p>
+        
+        <h3>Accuracy:</h3>
+        <p>AI-generated content can occasionally be inaccurate, incomplete, or biased. Hako does not guarantee the factual correctness of any cards generated by the AI.</p>
+        
+        <h3>User Review:</h3>
+        <p>You are solely responsible for reviewing and verifying the accuracy of any flashcards before using them for educational or professional purposes.</p>
+        
+        <h3>Liability:</h3>
+        <p>Hako is not liable for any damages (such as failing grades or misinformation) resulting from reliance on AI-generated content.</p>
+
+        <h2>5. Acceptable Use</h2>
+        <p>You agree not to use the App to:</p>
+        <ul>
+            <li>Generate content that is illegal, harmful, or promotes hate speech.</li>
+            <li>Attempt to reverse-engineer the App or bypass its security features.</li>
+            <li>Use automated bots to scrape data or overwhelm our API services.</li>
+            <li>Input sensitive personal data (e.g., social security numbers, private medical info) into the AI generation prompts.</li>
+        </ul>
+
+        <h2>6. Subscriptions and Payments</h2>
+        <h3>Billing:</h3>
+        <p>All payments are processed via Stripe. By subscribing, you agree to Stripe's terms and authorize us to charge the membership fee to your selected payment method.</p>
+        
+        <h3>Cancellations:</h3>
+        <p>You may cancel your subscription at any time. Access will continue until the end of your current billing period.</p>
+        
+        <h3>Refunds:</h3>
+        <p>Unless required by law, paid subscription fees are non-refundable.</p>
+
+        <h2>7. Intellectual Property</h2>
+        <h3>Our Content:</h3>
+        <p>The App's interface, logo, code, and original branding are the property of Hako.</p>
+        
+        <h3>Your Content:</h3>
+        <p>You retain ownership of the text and flashcards you create. However, by using the service, you grant us a license to process this content specifically to provide the service to you.</p>
+
+        <h2>8. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Hako shall not be liable for any indirect, incidental, or consequential damages arising out of your use or inability to use the service. The service is provided on an "AS IS" and "AS AVAILABLE" basis.</p>
+
+        <h2>9. Changes to Terms</h2>
+        <p>We may update these terms from time to time. We will notify you of significant changes by posting the new terms within the App. Your continued use of the App after changes are posted constitutes your acceptance of the new terms.</p>
+
+        <h2>10. Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:hako02423@gmail.com">hako02423@gmail.com</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hako. All rights reserved. | <a href="index.html">Back to Home</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+        
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
+
